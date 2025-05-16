@@ -1,0 +1,19 @@
+2025-05-15 16:18:58,835 - twitter_collector - INFO - Twitter API client initialized successfully
+2025-05-15 16:18:58,836 - twitter_collector - INFO - Collecting tweets with hashtags: ['#artificialintelligence']
+2025-05-15 16:19:00,157 - twitter_collector - INFO - Collected 10 tweets with hashtags
+2025-05-15 16:19:00,157 - twitter_collector - INFO - Collecting tweets from accounts: ['OpenAI']
+2025-05-15 16:19:01,394 - twitter_collector - INFO - Collected 4 tweets from accounts
+2025-05-15 16:41:27,867 - twitter_collector - INFO - Twitter API client initialized successfully
+2025-05-15 16:41:27,867 - twitter_collector - INFO - Collecting tweets with hashtags: ['#artificialintelligence']
+2025-05-15 16:41:29,179 - twitter_collector - INFO - Collected 10 tweets with hashtags
+2025-05-15 16:41:29,180 - twitter_collector - INFO - Collecting tweets from accounts: ['OpenAI']
+2025-05-15 16:41:30,404 - twitter_collector - INFO - Collected 4 tweets from accounts
+2025-05-15 17:03:07,119 - twitter_collector - INFO - Twitter API client initialized successfully
+2025-05-15 17:07:08,764 - twitter_collector - INFO - Twitter API client initialized successfully
+2025-05-15 17:07:08,765 - twitter_collector - INFO - Collecting tweets with hashtags: ['#artificialintelligence']
+2025-05-15 17:07:08,988 - twitter_collector - ERROR - Error collecting tweets by hashtags: 400 Bad Request
+Invalid 'start_time':'2025-05-08T22:06Z'. 'start_time' must be on or after 2025-05-08T22:06Z
+2025-05-15 17:07:08,989 - twitter_collector - INFO - Collecting tweets from accounts: ['OpenAI']
+2025-05-15 17:07:10,241 - twitter_collector - INFO - Collected 8 tweets from accounts
+2025-05-15 17:08:32,318 - twitter_collector - INFO - Twitter API client initialized successfully
+2025-05-15 17:08:32,319 - twitter_collector - INFO - Collecting tweets with hashtags: ['#artificialintelligence']

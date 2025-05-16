@@ -1,0 +1,19 @@
+2025-05-15 16:18:58,835 - main_collector - INFO - Data collector initialized
+2025-05-15 16:18:58,835 - main_collector - INFO - Starting data collection from all sources (max_results=10, days_ago=3)
+2025-05-15 16:19:01,395 - main_collector - INFO - Collected 14 items from Twitter
+2025-05-15 16:19:01,395 - main_collector - INFO - Collected 10 items from LinkedIn (simulated)
+2025-05-15 16:19:10,564 - main_collector - INFO - Collected 2 items from RSS feeds
+2025-05-15 16:19:10,564 - main_collector - INFO - Data collection completed. Total items: 26
+2025-05-15 16:19:10,569 - main_collector - INFO - Data saved to data/collector_test_20250515_161910.json
+2025-05-15 16:41:27,867 - main_collector - INFO - Data collector initialized
+2025-05-15 16:41:27,867 - main_collector - INFO - Starting data collection from all sources (max_results=10, days_ago=3)
+2025-05-15 16:41:30,404 - main_collector - INFO - Collected 14 items from Twitter
+2025-05-15 16:42:03,624 - main_collector - INFO - Collected 20 items from LinkedIn (real data)
+2025-05-15 16:42:17,228 - main_collector - INFO - Collected 2 items from RSS feeds
+2025-05-15 16:42:17,230 - main_collector - INFO - Data collection completed. Total items: 36
+2025-05-15 16:42:17,233 - main_collector - INFO - Data saved to data/collector_test_20250515_164217.json
+2025-05-15 17:03:07,120 - main_collector - INFO - Data collector initialized
+2025-05-15 17:03:17,987 - main_collector - INFO - Data saved to data/collected_data_20250515_220317.json
+2025-05-15 17:07:08,765 - main_collector - INFO - Data collector initialized
+2025-05-15 17:07:57,066 - main_collector - INFO - Data saved to data/collected_data_20250515_220757.json
+2025-05-15 17:08:32,318 - main_collector - INFO - Data collector initialized

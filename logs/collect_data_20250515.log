@@ -1,0 +1,20 @@
+2025-05-15 17:03:07,119 - collect_data - INFO - Starting data collection process
+2025-05-15 17:03:07,120 - collect_data - INFO - Collecting data from RSS feeds
+2025-05-15 17:03:17,983 - collect_data - INFO - Collected 5 items from RSS feeds
+2025-05-15 17:03:17,983 - collect_data - INFO - Generating simulated LinkedIn data
+2025-05-15 17:03:17,985 - collect_data - INFO - Generated 10 simulated LinkedIn posts
+2025-05-15 17:03:17,987 - collect_data - INFO - Saving data to database
+2025-05-15 17:03:18,010 - collect_data - INFO - Data collection and storage completed successfully
+2025-05-15 17:03:18,010 - collect_data - INFO - Summary: {'twitter': 0, 'linkedin': 10, 'rss': 5, 'total': 15, 'timestamp': '2025-05-15T22:03:18.010217'}
+2025-05-15 17:07:08,764 - collect_data - INFO - Starting data collection process
+2025-05-15 17:07:08,765 - collect_data - INFO - Collecting data from Twitter
+2025-05-15 17:07:10,242 - collect_data - INFO - Collected 8 items from Twitter
+2025-05-15 17:07:10,242 - collect_data - INFO - Collecting data from LinkedIn
+2025-05-15 17:07:38,975 - collect_data - INFO - Collected 0 items from LinkedIn
+2025-05-15 17:07:38,977 - collect_data - INFO - Collecting data from RSS feeds
+2025-05-15 17:07:57,049 - collect_data - INFO - Collected 5 items from RSS feeds
+2025-05-15 17:07:57,067 - collect_data - INFO - Saving data to database
+2025-05-15 17:07:57,123 - collect_data - INFO - Data collection and storage completed successfully
+2025-05-15 17:07:57,123 - collect_data - INFO - Summary: {'twitter': 8, 'linkedin': 0, 'rss': 5, 'total': 13, 'timestamp': '2025-05-15T22:07:57.122992'}
+2025-05-15 17:08:32,318 - collect_data - INFO - Starting data collection process
+2025-05-15 17:08:32,319 - collect_data - INFO - Collecting data from Twitter

@@ -1,0 +1,221 @@
+{
+  "twitter": [],
+  "linkedin": [
+    {
+      "id": "simulated-linkedin-0",
+      "text": "Simulated LinkedIn post about AI from OpenAI. This is test data for development purposes.",
+      "created_at": "2025-05-15T22:03:17.985127",
+      "likes": 100,
+      "comments": 20,
+      "shares": 5,
+      "source": "linkedin",
+      "company": "OpenAI",
+      "url": "https://linkedin.com/company/openai/posts/simulated-0",
+      "author": {
+        "id": "company-0",
+        "name": "OpenAI",
+        "profile_url": "https://linkedin.com/company/openai"
+      }
+    },
+    {
+      "id": "simulated-linkedin-1",
+      "text": "Simulated LinkedIn post about AI from Google AI. This is test data for development purposes.",
+      "created_at": "2025-05-14T22:03:17.985153",
+      "likes": 110,
+      "comments": 22,
+      "shares": 6,
+      "source": "linkedin",
+      "company": "Google AI",
+      "url": "https://linkedin.com/company/google-ai/posts/simulated-1",
+      "author": {
+        "id": "company-1",
+        "name": "Google AI",
+        "profile_url": "https://linkedin.com/company/google-ai"
+      }
+    },
+    {
+      "id": "simulated-linkedin-2",
+      "text": "Simulated LinkedIn post about AI from Anthropic. This is test data for development purposes.",
+      "created_at": "2025-05-13T22:03:17.985163",
+      "likes": 120,
+      "comments": 24,
+      "shares": 7,
+      "source": "linkedin",
+      "company": "Anthropic",
+      "url": "https://linkedin.com/company/anthropic/posts/simulated-2",
+      "author": {
+        "id": "company-2",
+        "name": "Anthropic",
+        "profile_url": "https://linkedin.com/company/anthropic"
+      }
+    },
+    {
+      "id": "simulated-linkedin-3",
+      "text": "Simulated LinkedIn post about AI from DeepMind. This is test data for development purposes.",
+      "created_at": "2025-05-12T22:03:17.985171",
+      "likes": 130,
+      "comments": 26,
+      "shares": 8,
+      "source": "linkedin",
+      "company": "DeepMind",
+      "url": "https://linkedin.com/company/deepmind/posts/simulated-3",
+      "author": {
+        "id": "company-3",
+        "name": "DeepMind",
+        "profile_url": "https://linkedin.com/company/deepmind"
+      }
+    },
+    {
+      "id": "simulated-linkedin-4",
+      "text": "Simulated LinkedIn post about AI from Meta AI. This is test data for development purposes.",
+      "created_at": "2025-05-11T22:03:17.985178",
+      "likes": 140,
+      "comments": 28,
+      "shares": 9,
+      "source": "linkedin",
+      "company": "Meta AI",
+      "url": "https://linkedin.com/company/meta-ai/posts/simulated-4",
+      "author": {
+        "id": "company-4",
+        "name": "Meta AI",
+        "profile_url": "https://linkedin.com/company/meta-ai"
+      }
+    },
+    {
+      "id": "simulated-linkedin-5",
+      "text": "Simulated LinkedIn post about AI from OpenAI. This is test data for development purposes.",
+      "created_at": "2025-05-10T22:03:17.985186",
+      "likes": 150,
+      "comments": 30,
+      "shares": 10,
+      "source": "linkedin",
+      "company": "OpenAI",
+      "url": "https://linkedin.com/company/openai/posts/simulated-5",
+      "author": {
+        "id": "company-0",
+        "name": "OpenAI",
+        "profile_url": "https://linkedin.com/company/openai"
+      }
+    },
+    {
+      "id": "simulated-linkedin-6",
+      "text": "Simulated LinkedIn post about AI from Google AI. This is test data for development purposes.",
+      "created_at": "2025-05-09T22:03:17.985194",
+      "likes": 160,
+      "comments": 32,
+      "shares": 11,
+      "source": "linkedin",
+      "company": "Google AI",
+      "url": "https://linkedin.com/company/google-ai/posts/simulated-6",
+      "author": {
+        "id": "company-1",
+        "name": "Google AI",
+        "profile_url": "https://linkedin.com/company/google-ai"
+      }
+    },
+    {
+      "id": "simulated-linkedin-7",
+      "text": "Simulated LinkedIn post about AI from Anthropic. This is test data for development purposes.",
+      "created_at": "2025-05-15T22:03:17.985201",
+      "likes": 170,
+      "comments": 34,
+      "shares": 12,
+      "source": "linkedin",
+      "company": "Anthropic",
+      "url": "https://linkedin.com/company/anthropic/posts/simulated-7",
+      "author": {
+        "id": "company-2",
+        "name": "Anthropic",
+        "profile_url": "https://linkedin.com/company/anthropic"
+      }
+    },
+    {
+      "id": "simulated-linkedin-8",
+      "text": "Simulated LinkedIn post about AI from DeepMind. This is test data for development purposes.",
+      "created_at": "2025-05-14T22:03:17.985208",
+      "likes": 180,
+      "comments": 36,
+      "shares": 13,
+      "source": "linkedin",
+      "company": "DeepMind",
+      "url": "https://linkedin.com/company/deepmind/posts/simulated-8",
+      "author": {
+        "id": "company-3",
+        "name": "DeepMind",
+        "profile_url": "https://linkedin.com/company/deepmind"
+      }
+    },
+    {
+      "id": "simulated-linkedin-9",
+      "text": "Simulated LinkedIn post about AI from Meta AI. This is test data for development purposes.",
+      "created_at": "2025-05-13T22:03:17.985215",
+      "likes": 190,
+      "comments": 38,
+      "shares": 14,
+      "source": "linkedin",
+      "company": "Meta AI",
+      "url": "https://linkedin.com/company/meta-ai/posts/simulated-9",
+      "author": {
+        "id": "company-4",
+        "name": "Meta AI",
+        "profile_url": "https://linkedin.com/company/meta-ai"
+      }
+    }
+  ],
+  "rss": [
+    {
+      "id": "https://blog.google/outreach-initiatives/accessibility/android-gemini-ai-gaad-2025/",
+      "title": "New AI and accessibility updates across Android, Chrome and more",
+      "link": "https://blog.google/outreach-initiatives/accessibility/android-gemini-ai-gaad-2025/",
+      "published": "2025-05-15T16:00:00",
+      "content": "<img src=\"https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Blog_header_2096x1182_Option_2.max-600x600.format-webp.webp\">In honor of Global Accessibility Awareness Day, we\u2019re excited to roll out new updates across Android and Chrome, plus new resources for the ecosystem.",
+      "source": "rss",
+      "feed_name": "google_ai",
+      "author": "Angana Ghosh"
+    },
+    {
+      "id": "https://blog.google/technology/google-labs/ai-futures-fund/",
+      "title": "Helping startups build what\u2019s next with the AI Futures Fund",
+      "link": "https://blog.google/technology/google-labs/ai-futures-fund/",
+      "published": "2025-05-12T17:00:00",
+      "content": "<img src=\"https://storage.googleapis.com/gweb-uniblog-publish-prod/images/AIFF-Hero.max-600x600.format-webp.webp\">The AI Futures Fund is a new initiative from Google that invests in and works with startups.",
+      "source": "rss",
+      "feed_name": "google_ai",
+      "author": "Jonathan Silber"
+    },
+    {
+      "id": "https://blog.google/technology/developers/google-kaggle-genai-intensive-recap-2025/",
+      "title": "What you missed at our record-breaking GenAI Intensive course",
+      "link": "https://blog.google/technology/developers/google-kaggle-genai-intensive-recap-2025/",
+      "published": "2025-05-09T16:00:00",
+      "content": "<img src=\"https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Kaggle_Hero_2097x1182.max-600x600.format-webp.webp\">Google and Kaggle\u2019s Gen AI Intensive course, had more than 280,000 signups in just 20 days.",
+      "source": "rss",
+      "feed_name": "google_ai",
+      "author": "Anant Nawalgaria"
+    },
+    {
+      "id": "https://openai.com/index/expedia-jochen-koedijk",
+      "title": "AI powers Expedia\u2019s marketing evolution",
+      "link": "https://openai.com/index/expedia-jochen-koedijk",
+      "published": "2025-05-14T10:00:00",
+      "content": "A conversation with Jochen Koedijk, Chief Marketing Officer of Expedia Group.",
+      "source": "rss",
+      "feed_name": "openai_blog",
+      "author": "OpenAI News"
+    },
+    {
+      "id": "https://openai.com/index/healthbench",
+      "title": "Introducing HealthBench",
+      "link": "https://openai.com/index/healthbench",
+      "published": "2025-05-12T10:30:00",
+      "content": "HealthBench is a new evaluation benchmark for AI in healthcare which evaluates models in realistic scenarios. Built with input from 250+ physicians, it aims to provide a shared standard for model performance and safety in health.",
+      "source": "rss",
+      "feed_name": "openai_blog",
+      "author": "OpenAI News"
+    }
+  ],
+  "metadata": {
+    "collection_time": "2025-05-15T22:03:17.985379",
+    "total_items": 15
+  }
+}
