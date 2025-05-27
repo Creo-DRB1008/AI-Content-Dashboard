@@ -11,7 +11,7 @@ A web application that aggregates and displays curated AI-related content from T
 - **News Sources**: Aggregate via RSS feeds from WIRED, MIT AI News, Google AI Blog, OpenAI Blog
 
 ### Data Processing
-- **Summarization**: Automated AI-powered summarization for RSS articles using OpenAI GPT or compatible APIs
+- **Summarization**: OpenAI GPT models for concise content summaries
 - **Categorization**: Classify into Research, Product Releases, Opinion Pieces, Newsletters, Social Media
 
 ### Backend
@@ -26,15 +26,9 @@ A web application that aggregates and displays curated AI-related content from T
 ## Setup Instructions
 1. Clone repository
 2. Install dependencies
-3. Configure API keys for data sources and summarization service
-4. Set up SQL Server database
+3. Configure API keys for data sources
+4. Set up PostgreSQL database
 5. Run development server
-
-### Environment Variables
-Copy `.env.example` to `.env` and configure:
-- **Summarization API**: `SUMMARIZATION_API_KEY` (OpenAI API key or compatible service)
-- **Database**: SQL Server connection parameters
-- **Social APIs**: Twitter and LinkedIn credentials (optional)
 
 ## Development Tasks
 
@@ -45,7 +39,7 @@ Copy `.env.example` to `.env` and configure:
 - [ ] Create data models for unified storage
 
 ### Phase 2: Processing Pipeline
-- [x] Develop AI summarization service
+- [ ] Develop AI summarization service
 - [ ] Build categorization system
 - [ ] Implement content filtering
 

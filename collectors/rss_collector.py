@@ -9,6 +9,7 @@ from dateutil import parser as date_parser
 
 from src.utils.config import RSS_FEEDS
 from src.utils.logger import setup_logger
+from src.services.summarization_service import summarization_service
 
 # Set up logger
 logger = setup_logger('rss_collector')
@@ -51,7 +52,7 @@ class RSSCollector:
                 return []
 
             # Calculate cutoff date
-            cutoff_date = datetime.utcnow() - timedelta(days=days_ago)
+            cutoff_date = datetime.now() - timedelta(days=days_ago)
 
             entries = []
             for entry in feed.entries:
@@ -64,7 +65,7 @@ class RSSCollector:
                             pub_date = pub_date.replace(tzinfo=None)
                     except:
                         # If date parsing fails, use current time
-                        pub_date = datetime.utcnow()
+                        pub_date = datetime.now()
                 elif hasattr(entry, 'updated'):
                     try:
                         pub_date = date_parser.parse(entry.updated)
@@ -72,10 +73,10 @@ class RSSCollector:
                         if pub_date.tzinfo is not None:
                             pub_date = pub_date.replace(tzinfo=None)
                     except:
-                        pub_date = datetime.utcnow()
+                        pub_date = datetime.now()
                 else:
                     # No date available, use current time
-                    pub_date = datetime.utcnow()
+                    pub_date = datetime.now()
 
                 # Skip entries older than cutoff date - both are now timezone naive
                 if pub_date < cutoff_date:
@@ -90,6 +91,13 @@ class RSSCollector:
                 elif hasattr(entry, 'description'):
                     content = entry.description
 
+                # Generate summary for the content
+                summary = None
+                try:
+                    summary = summarization_service.generate_summary(content, entry.title)
+                except Exception as e:
+                    logger.warning(f"Failed to generate summary for entry {entry.title}: {str(e)}")
+
                 # Create entry object
                 entry_data = {
                     'id': entry.get('id', entry.link),
@@ -97,6 +105,7 @@ class RSSCollector:
                     'link': entry.link,
                     'published': pub_date.isoformat(),
                     'content': content,
+                    'summary': summary,  # Add the generated summary
                     'source': 'rss',
                     'feed_name': feed_name,
                     'author': entry.get('author', feed.feed.get('title', feed_name))

@@ -1,12 +1,16 @@
+#!/usr/bin/env python3
+
 """
 Main script for the AI Dashboard data collection.
+Currently active sources: RSS feeds only
+Temporarily disabled: Twitter, LinkedIn (to be re-enabled later)
 """
 import argparse
 import json
 import os
 from datetime import datetime
 
-from src.data_collection.collector import DataCollector
+from collectors.base_collector import DataCollector
 from src.models.storage import initialize_database, ContentStorage
 from src.utils.logger import setup_logger
 
@@ -20,10 +24,10 @@ def parse_args():
     Returns:
         argparse.Namespace: Parsed arguments.
     """
-    parser = argparse.ArgumentParser(description='AI Dashboard Data Collection')
+    parser = argparse.ArgumentParser(description='AI Dashboard Data Collection (RSS only)')
     
     parser.add_argument('--init-db', action='store_true', help='Initialize the database')
-    parser.add_argument('--collect', action='store_true', help='Collect data from all sources')
+    parser.add_argument('--collect', action='store_true', help='Collect data from RSS sources')
     parser.add_argument('--max-results', type=int, default=100, help='Maximum number of results per source')
     parser.add_argument('--days-ago', type=int, default=7, help='How many days back to collect data')
     parser.add_argument('--save-json', action='store_true', help='Save collected data to JSON file')
@@ -46,13 +50,16 @@ def main():
     
     # Collect data if requested
     if args.collect:
-        logger.info(f"Collecting data (max_results={args.max_results}, days_ago={args.days_ago})...")
+        logger.info(f"Collecting data from RSS sources only (max_results={args.max_results}, days_ago={args.days_ago})...")
         
-        # Create data collector
+        # Create data collector (RSS only)
         collector = DataCollector()
         
-        # Collect data
+        # Collect data (RSS only)
         data = collector.collect_all_data(max_results=args.max_results, days_ago=args.days_ago)
+        
+        # Log collection summary
+        logger.info(f"Collection summary - RSS: {len(data['rss'])} items, Total: {data['metadata']['total_items']} items")
         
         # Save to JSON file if requested
         if args.save_json:
@@ -74,7 +81,7 @@ def main():
             summary = ContentStorage.save_all_data(data)
             logger.info(f"Database save summary: {json.dumps(summary)}")
         
-        logger.info("Data collection completed")
+        logger.info("Data collection completed (RSS only)")
 
 if __name__ == "__main__":
     main()

@@ -16,17 +16,19 @@ const mockDates = [
 
 export default async function handler(_, res) {
   try {
-    // Try to execute Python script to fetch available dates from database
-    const { stdout } = await execPromise('python src/api/get_content.py --get-dates')
+    // Execute Python script to fetch available dates from SQL Server database
+    const { stdout } = await execPromise('python backend/api/get_content.py --get-dates')
     const dates = JSON.parse(stdout)
     
-    // Return real data from database
+    // Return data from SQL Server database
     res.status(200).json(dates)
   } catch (error) {
-    console.error('Error fetching dates from database:', error)
-    console.log('Falling back to mock dates')
+    console.error('Error fetching dates from SQL Server database:', error)
     
-    // Fall back to mock dates if database connection fails
-    res.status(200).json(mockDates)
+    // Return error response instead of fallback
+    res.status(500).json({ 
+      error: 'Failed to fetch dates from SQL Server database',
+      message: error.message 
+    })
   }
 }

@@ -1,22 +1,22 @@
 """
 Test script for database models and storage.
+This script tests the SQL Server database functionality.
 """
+import sys
 import os
 import json
 from datetime import datetime
-import sqlite3
 
-# Modify the database configuration to use SQLite for testing
-os.environ["DATABASE_URL"] = "sqlite:///test_ai_dashboard.db"
+# Add the root directory to the Python path
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Override the database configuration in the config module
-import src.utils.config as config
-config.DATABASE_URL = "sqlite:///test_ai_dashboard.db"
+# Note: This script uses the configured SQL Server database from environment variables
+# Make sure your .env file has the correct SQL Server configuration
 
 def test_database_connection():
     print("\n=== Testing Database Connection ===")
     try:
-        from src.models.database import engine, Base, init_db
+        from src.models.database import engine, Base
 
         # Create tables
         Base.metadata.create_all(bind=engine)
@@ -139,7 +139,7 @@ def test_storage_module():
             {
                 "id": "test-twitter-1",
                 "text": "This is a test tweet",
-                "created_at": datetime.utcnow().isoformat(),
+                "created_at": datetime.now().isoformat(),
                 "likes": 10,
                 "retweets": 5,
                 "replies": 2,
@@ -156,7 +156,7 @@ def test_storage_module():
             {
                 "id": "test-linkedin-1",
                 "text": "This is a test LinkedIn post",
-                "created_at": datetime.utcnow().isoformat(),
+                "created_at": datetime.now().isoformat(),
                 "likes": 20,
                 "shares": 3,
                 "comments": 5,
@@ -175,7 +175,7 @@ def test_storage_module():
                 "title": "Test RSS Entry",
                 "content": "This is a test RSS entry",
                 "link": "https://example.com/rss/1",
-                "published": datetime.utcnow().isoformat(),
+                "published": datetime.now().isoformat(),
                 "author": "Test RSS Author"
             }
         ]
@@ -222,12 +222,8 @@ def run_all_tests():
     for name, result in results.items():
         print(f"{name}: {result}")
 
-    # Clean up test database
-    try:
-        os.remove("test_ai_dashboard.db")
-        print("\nTest database removed")
-    except:
-        print("\nFailed to remove test database")
+    # Note: SQL Server database cleanup is not needed as we use the main database
+    print("\nTests completed. SQL Server database remains intact.")
 
 if __name__ == "__main__":
     run_all_tests()

@@ -243,30 +243,28 @@ class ContentStorage:
         db = next(get_db())
 
         try:
-            # Use SQL to extract just the date part and get distinct dates
-            from sqlalchemy import func, distinct
+            # Use raw SQL that's compatible with SQL Server
             from sqlalchemy.sql import text
 
-            # This query gets distinct dates and counts content per date
-            query = db.query(
-                func.date(Content.published_at).label('date'),
-                func.count(Content.id).label('count')
-            ).group_by(
-                func.date(Content.published_at)
-            ).order_by(
-                text('date DESC')
-            ).limit(limit)
+            # SQL Server compatible query - use string formatting for TOP clause
+            sql_query = text(f"""
+                SELECT TOP {limit}
+                    CONVERT(DATE, published_at) as date,
+                    COUNT(id) as count
+                FROM content 
+                GROUP BY CONVERT(DATE, published_at)
+                ORDER BY CONVERT(DATE, published_at) DESC
+            """)
 
-            results = query.all()
+            results = db.execute(sql_query).fetchall()
 
             # Convert to list of dictionaries
             dates = []
-            for date, count in results:
-                # Check if date is already a string or a date object
-                date_str = date if isinstance(date, str) else date.isoformat()
+            for row in results:
+                date_str = row.date.isoformat() if hasattr(row.date, 'isoformat') else str(row.date)
                 dates.append({
                     'date': date_str,
-                    'count': count
+                    'count': row.count
                 })
 
             return dates
