@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: ai-dashboard-backend
+    env: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: LOG_LEVEL
+        value: info
+      - key: DB_SERVER
+        sync: false
+      - key: DB_DATABASE
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: SUMMARIZATION_ENABLED
+        value: true
+      - key: SUMMARIZATION_API_KEY
+        sync: false
+      - key: SUMMARIZATION_API_URL
+        value: https://api.openai.com/v1/chat/completions
+      - key: SUMMARIZATION_MODEL
+        value: gpt-3.5-turbo
+      - key: SUMMARIZATION_MAX_TOKENS
+        value: 150
