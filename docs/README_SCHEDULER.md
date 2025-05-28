@@ -1,10 +1,49 @@
-# AI Dashboard Daily Scheduler
+# Data Collection Scheduling for AI Dashboard
 
-This document explains how to set up and use the daily scheduler for the AI Dashboard. The scheduler is designed to collect data from various sources (Twitter, LinkedIn, RSS feeds) once a day at 1:00 AM and store it in the database for display on the dashboard.
+⚠️ **IMPORTANT UPDATE**: The local scheduler described in this document is **DEPRECATED**.
 
-## Overview
+## Current Approach (Recommended)
 
-The scheduler consists of the following components:
+**Data collection is now handled exclusively by GitHub Actions workflow.**
+
+- **File**: `.github/workflows/daily-data-collection.yml`
+- **Schedule**: Runs daily at 1:00 AM UTC
+- **Trigger**: Automatic via GitHub's cron scheduler
+- **Benefits**:
+  - More reliable than local scheduling
+  - Better monitoring and logging via GitHub Actions interface
+  - No conflicts with Vercel's stateless deployment
+  - Centralized in the repository
+  - No need for long-running processes
+
+### Monitoring GitHub Actions
+
+1. Go to your GitHub repository
+2. Click on the "Actions" tab
+3. View workflow runs and logs
+4. Manually trigger runs using "workflow_dispatch" if needed
+
+### Setting up GitHub Secrets
+
+The workflow requires these secrets to be set in your GitHub repository:
+
+**Database Configuration:**
+- `DB_SERVER` - Your database server address
+- `DB_DATABASE` - Database name
+- `DB_USERNAME` - Database username
+- `DB_PASSWORD` - Database password
+- `DB_DRIVER` - Database driver (e.g., "ODBC Driver 17 for SQL Server")
+
+**API Keys (optional, for future use):**
+- `TWITTER_API_KEY`, `TWITTER_API_SECRET`, `TWITTER_ACCESS_TOKEN`, `TWITTER_ACCESS_SECRET`
+- `LINKEDIN_API_KEY`
+- `SUMMARIZATION_API_KEY` - For AI summarization service
+
+## Legacy Local Scheduler (DEPRECATED)
+
+⚠️ **WARNING**: The components described below are deprecated and should not be used in production.
+
+The legacy local scheduler consisted of the following components:
 
 1. **daily_scheduler.py**: The main scheduler script that runs as a daemon process and schedules data collection to run daily at 1:00 AM.
 2. **start_scheduler.sh**: A shell script to start the scheduler as a daemon process.

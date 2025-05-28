@@ -1,2 +1,0 @@
-2025-05-16 12:02:19,973 - storage - ERROR - Error retrieving available dates: 'str' object has no attribute 'isoformat'
-2025-05-16 12:02:20,231 - storage - ERROR - Error retrieving available dates: 'str' object has no attribute 'isoformat'

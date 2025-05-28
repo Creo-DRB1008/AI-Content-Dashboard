@@ -10,9 +10,17 @@ export default function DatePicker({ selectedDate, onDateChange }) {
         setLoading(true)
         const res = await fetch('/api/dates')
         const data = await res.json()
-        setAvailableDates(data)
+
+        // Check if the response is an error or if data is an array
+        if (res.ok && Array.isArray(data)) {
+          setAvailableDates(data)
+        } else {
+          console.error('Error from dates API:', data)
+          setAvailableDates([]) // Set empty array on error
+        }
       } catch (error) {
         console.error('Error fetching dates:', error)
+        setAvailableDates([]) // Set empty array on error
       } finally {
         setLoading(false)
       }

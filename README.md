@@ -21,7 +21,12 @@ A web application that aggregates and displays curated AI-related content from T
 ### Frontend
 - **Framework**: React for responsive UI
 - **Features**: Search, filters, category tabs
-- **Deployment**: Vercel
+- **Deployment**: Vercel (frontend only)
+
+### Data Collection
+- **Scheduling**: GitHub Actions workflow (daily at 1:00 AM UTC)
+- **Process**: Automated RSS feed collection, summarization, and database storage
+- **Monitoring**: GitHub Actions interface for logs and status
 
 ## Setup Instructions
 1. Clone repository
