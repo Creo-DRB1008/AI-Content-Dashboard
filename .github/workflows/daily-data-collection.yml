@@ -9,22 +9,22 @@ on:
 jobs:
   collect-data:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-      
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
-        
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install schedule
-        
+
     - name: Run data collection
       env:
         TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
@@ -32,9 +32,17 @@ jobs:
         TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
         TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
         LINKEDIN_API_KEY: ${{ secrets.LINKEDIN_API_KEY }}
+        # Database environment variables
+        DB_SERVER: ${{ secrets.DB_SERVER }}
+        DB_DATABASE: ${{ secrets.DB_DATABASE }}
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        DB_DRIVER: ${{ secrets.DB_DRIVER }}
+        # Summarization API
+        SUMMARIZATION_API_KEY: ${{ secrets.SUMMARIZATION_API_KEY }}
       run: |
-        python collect_and_save_data.py --days-ago 1 --max-results 50
-        
+        python backend/services/collect_and_save_data.py --days-ago 1 --max-results 50
+
     - name: Commit and push if there are changes
       run: |
         git config --local user.email "action@github.com"

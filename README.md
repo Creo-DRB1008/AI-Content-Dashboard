@@ -11,7 +11,7 @@ A web application that aggregates and displays curated AI-related content from T
 - **News Sources**: Aggregate via RSS feeds from WIRED, MIT AI News, Google AI Blog, OpenAI Blog
 
 ### Data Processing
-- **Summarization**: OpenAI GPT models for concise content summaries
+- **Summarization**: Automated AI-powered summarization for RSS articles using OpenAI GPT or compatible APIs
 - **Categorization**: Classify into Research, Product Releases, Opinion Pieces, Newsletters, Social Media
 
 ### Backend
@@ -21,14 +21,25 @@ A web application that aggregates and displays curated AI-related content from T
 ### Frontend
 - **Framework**: React for responsive UI
 - **Features**: Search, filters, category tabs
-- **Deployment**: Vercel
+- **Deployment**: Vercel (frontend only)
+
+### Data Collection
+- **Scheduling**: GitHub Actions workflow (daily at 1:00 AM UTC)
+- **Process**: Automated RSS feed collection, summarization, and database storage
+- **Monitoring**: GitHub Actions interface for logs and status
 
 ## Setup Instructions
 1. Clone repository
 2. Install dependencies
-3. Configure API keys for data sources
-4. Set up PostgreSQL database
+3. Configure API keys for data sources and summarization service
+4. Set up SQL Server database
 5. Run development server
+
+### Environment Variables
+Copy `.env.example` to `.env` and configure:
+- **Summarization API**: `SUMMARIZATION_API_KEY` (OpenAI API key or compatible service)
+- **Database**: SQL Server connection parameters
+- **Social APIs**: Twitter and LinkedIn credentials (optional)
 
 ## Development Tasks
 
@@ -39,7 +50,7 @@ A web application that aggregates and displays curated AI-related content from T
 - [ ] Create data models for unified storage
 
 ### Phase 2: Processing Pipeline
-- [ ] Develop AI summarization service
+- [x] Develop AI summarization service
 - [ ] Build categorization system
 - [ ] Implement content filtering
 

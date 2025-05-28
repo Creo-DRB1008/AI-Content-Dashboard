@@ -31,7 +31,6 @@ node_modules/
 .DS_Store
 
 # Local data
-*.db
 data/
 logs/
 
