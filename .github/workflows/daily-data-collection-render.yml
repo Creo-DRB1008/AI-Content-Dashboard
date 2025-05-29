@@ -1,0 +1,94 @@
+name: Daily Data Collection (via Render Backend)
+
+on:
+  schedule:
+    # Run daily at 1:00 AM UTC
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+    # Allow manual triggering
+
+jobs:
+  collect-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Collect AI Content Data
+      env:
+        BACKEND_URL: ${{ secrets.BACKEND_URL }}
+        API_KEY: ${{ secrets.API_KEY }}
+      run: |
+        echo "🚀 Starting data collection via Render backend..."
+        echo "Backend URL: $BACKEND_URL"
+        
+        # Make request to Render backend
+        response=$(curl -s -w "\n%{http_code}" -X POST "$BACKEND_URL/api/data/collect" \
+          -H "Authorization: Bearer $API_KEY" \
+          -H "Content-Type: application/json")
+        
+        # Extract response body and status code
+        http_code=$(echo "$response" | tail -n1)
+        response_body=$(echo "$response" | head -n -1)
+        
+        echo "HTTP Status: $http_code"
+        echo "Response: $response_body"
+        
+        # Check if request was successful
+        if [ "$http_code" -eq 200 ]; then
+          echo "✅ Data collection completed successfully!"
+          
+          # Parse and display results
+          collected=$(echo "$response_body" | jq -r '.collected // 0')
+          summarized=$(echo "$response_body" | jq -r '.summarized // 0')
+          duration=$(echo "$response_body" | jq -r '.duration // "unknown"')
+          
+          echo "📊 Results:"
+          echo "   - Items collected: $collected"
+          echo "   - Items summarized: $summarized"
+          echo "   - Duration: $duration"
+          
+          # Check for errors
+          errors=$(echo "$response_body" | jq -r '.errors // empty')
+          if [ ! -z "$errors" ] && [ "$errors" != "null" ]; then
+            echo "⚠️ Some errors occurred during collection:"
+            echo "$errors" | jq -r '.[]'
+          fi
+        else
+          echo "❌ Data collection failed with status $http_code"
+          echo "Error response: $response_body"
+          exit 1
+        fi
+
+    - name: Health Check
+      env:
+        BACKEND_URL: ${{ secrets.BACKEND_URL }}
+      run: |
+        echo "🔍 Checking backend health..."
+        
+        health_response=$(curl -s "$BACKEND_URL/api/health")
+        echo "Health check response: $health_response"
+        
+        status=$(echo "$health_response" | jq -r '.status // "unknown"')
+        if [ "$status" = "healthy" ]; then
+          echo "✅ Backend is healthy"
+        else
+          echo "⚠️ Backend health check indicates issues"
+        fi
+
+    - name: Get Collection Status
+      env:
+        BACKEND_URL: ${{ secrets.BACKEND_URL }}
+      run: |
+        echo "📈 Getting collection status..."
+        
+        status_response=$(curl -s "$BACKEND_URL/api/data/status")
+        echo "Status response: $status_response"
+        
+        today_count=$(echo "$status_response" | jq -r '.todayCount // 0')
+        last_collection=$(echo "$status_response" | jq -r '.lastCollection // "never"')
+        
+        echo "📊 Collection Statistics:"
+        echo "   - Items collected today: $today_count"
+        echo "   - Last collection: $last_collection"
