@@ -2,7 +2,7 @@ name: Daily Data Collection (via Render Backend)
 
 on:
   schedule:
-    # Run daily at 1:00 AM UTC
+    # Run daily at 4:10 PM UTC
     - cron: '0 1 * * *'
   workflow_dispatch:
     # Allow manual triggering
