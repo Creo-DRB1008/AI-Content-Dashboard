@@ -1,37 +1,30 @@
-import { getPool } from '../../lib/database'
-
 export default async function handler(_, res) {
   try {
-    // Get database connection
-    const pool = await getPool()
+    const backendUrl = process.env.BACKEND_URL || 'http://localhost:3000'
+    const url = `${backendUrl}/api/content/dates`
 
-    // Query to get available dates with content count
-    const query = `
-      SELECT
-        CAST(published_at AS DATE) as date,
-        COUNT(*) as count
-      FROM content
-      WHERE published_at IS NOT NULL
-      GROUP BY CAST(published_at AS DATE)
-      ORDER BY date DESC
-    `
+    // Call backend API
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
 
-    const result = await pool.request().query(query)
+    if (!response.ok) {
+      throw new Error(`Backend API error: ${response.status} ${response.statusText}`)
+    }
 
-    // Format the results
-    const dates = result.recordset.map(row => ({
-      date: row.date.toISOString().split('T')[0], // Format as YYYY-MM-DD
-      count: row.count
-    }))
+    const dates = await response.json()
 
-    // Return data from database
+    // Return data from backend
     res.status(200).json(dates)
   } catch (error) {
-    console.error('Error fetching dates from SQL Server database:', error)
+    console.error('Error fetching dates from backend:', error)
 
     // Return error response
     res.status(500).json({
-      error: 'Failed to fetch dates from SQL Server database',
+      error: 'Failed to fetch dates from backend',
       message: error.message
     })
   }
