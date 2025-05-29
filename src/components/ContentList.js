@@ -21,7 +21,7 @@ export default function ContentList({ items, onCardClick }) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Content count */}
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-600">
@@ -29,8 +29,8 @@ export default function ContentList({ items, onCardClick }) {
         </p>
       </div>
 
-      {/* Responsive grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+      {/* Responsive grid with improved spacing */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
         {items.map(item => (
           <ContentCard
             key={item.id}
