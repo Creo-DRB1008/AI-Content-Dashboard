@@ -71,37 +71,44 @@ export default function Home() {
       </Head>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        {/* Header */}
-        <header className="mb-8 sm:mb-12">
-          <div className="text-center sm:text-left">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
-              AI Content Aggregator
-            </h1>
-            <p className="text-gray-600 text-lg sm:text-xl max-w-2xl">
-              Your daily dose of AI news, research, and discussions with intelligent summaries
-            </p>
+        {/* Compact Header with Integrated Navigation */}
+        <header className="mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+            <div>
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">
+                Latest AI News & Research
+              </h1>
+              <p className="text-gray-600 text-sm sm:text-base">
+                Your daily 10-minute read powered by intelligent summaries
+              </p>
+            </div>
+
+            {/* Integrated Category Tabs */}
+            <div className="flex items-center gap-2">
+              {categories.map(category => (
+                <button
+                  key={category.id}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    activeCategory === category.id
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                  onClick={() => setActiveCategory(category.id)}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Compact Date Filter */}
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3">
+            <DatePicker
+              selectedDate={selectedDate}
+              onDateChange={setSelectedDate}
+            />
           </div>
         </header>
-
-        {/* Filters Section */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 mb-6 sm:mb-8">
-          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-6">
-            <div className="flex-1">
-              <CategoryTabs
-                categories={categories}
-                activeCategory={activeCategory}
-                setActiveCategory={setActiveCategory}
-              />
-            </div>
-
-            <div className="lg:w-80">
-              <DatePicker
-                selectedDate={selectedDate}
-                onDateChange={setSelectedDate}
-              />
-            </div>
-          </div>
-        </div>
 
         {/* Content Section */}
         <main>

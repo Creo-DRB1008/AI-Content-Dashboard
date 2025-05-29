@@ -26,14 +26,14 @@
   }
 }
 
-/* Custom animations */
+/* Custom animations and components */
 @layer components {
   .card-hover {
     @apply transition-all duration-300 ease-in-out;
   }
 
   .card-hover:hover {
-    @apply shadow-lg transform -translate-y-1;
+    @apply shadow-2xl transform -translate-y-2;
   }
 
   .btn-primary {
@@ -42,5 +42,45 @@
 
   .btn-secondary {
     @apply inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors duration-200;
+  }
+
+  /* Enhanced text truncation utilities */
+  .line-clamp-5 {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-6 {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Smooth expand/collapse animations */
+  .expand-enter {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  }
+
+  .expand-enter-active {
+    max-height: 1000px;
+    opacity: 1;
+  }
+
+  .expand-exit {
+    max-height: 1000px;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+  }
+
+  .expand-exit-active {
+    max-height: 0;
+    opacity: 0;
   }
 }

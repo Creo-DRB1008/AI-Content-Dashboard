@@ -4,6 +4,7 @@ import { formatSmartDate, formatFullTimestamp } from '../utils/timeUtils'
 export default function ContentCard({ item, onClick }) {
   const [imageError, setImageError] = useState(false)
   const [imageLoading, setImageLoading] = useState(true)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const getSourceIcon = (source) => {
     switch(source) {
@@ -73,9 +74,20 @@ export default function ContentCard({ item, onClick }) {
   const imageUrl = getImageUrl()
   const hasValidImage = imageUrl && !imageError
 
+  // Helper function to truncate text
+  const truncateText = (text, maxLength = 150) => {
+    if (!text || text.length <= maxLength) return text
+    return text.substring(0, maxLength).trim() + '...'
+  }
+
+  // Check if summary/content is long enough to need expansion
+  const needsExpansion = (text) => {
+    return text && text.length > 150
+  }
+
   return (
     <article
-      className="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm card-hover cursor-pointer"
+      className="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-xl card-hover cursor-pointer"
       onClick={handleCardClick}
       role="button"
       tabIndex={0}
@@ -127,21 +139,50 @@ export default function ContentCard({ item, onClick }) {
         </h3>
 
         {/* Summary/Content */}
-        <div className="mb-4">
+        <div className="mb-6">
           {item.summary ? (
             <>
-              <div className="inline-flex items-center text-xs text-blue-600 font-medium bg-blue-50 px-2 py-1 rounded-full mb-2">
+              <div className="inline-flex items-center text-xs text-blue-600 font-medium bg-blue-50 px-2 py-1 rounded-full mb-3">
                 <span className="mr-1">✨</span>
                 AI Summary
               </div>
-              <p className="text-gray-700 text-sm leading-relaxed mb-2">
-                {item.summary}
-              </p>
+              <div className="text-gray-600 text-sm leading-relaxed">
+                <p className="mb-2">
+                  {isExpanded || !needsExpansion(item.summary)
+                    ? item.summary
+                    : truncateText(item.summary)
+                  }
+                </p>
+                {needsExpansion(item.summary) && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setIsExpanded(!isExpanded)
+                    }}
+                    className="text-blue-600 hover:text-blue-800 text-xs font-medium transition-colors duration-200"
+                  >
+                    {isExpanded ? 'Show less' : 'Show more'}
+                  </button>
+                )}
+              </div>
             </>
           ) : (
-            <p className="text-gray-600 text-sm leading-relaxed line-clamp-4 mb-2">
-              {item.content || 'No content available'}
-            </p>
+            <div className="text-gray-500 text-sm leading-relaxed">
+              <p className={`${isExpanded ? '' : 'line-clamp-3'}`}>
+                {item.content || 'No content available'}
+              </p>
+              {needsExpansion(item.content) && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setIsExpanded(!isExpanded)
+                  }}
+                  className="text-blue-600 hover:text-blue-800 text-xs font-medium mt-2 transition-colors duration-200"
+                >
+                  {isExpanded ? 'Show less' : 'Show more'}
+                </button>
+              )}
+            </div>
           )}
         </div>
 
