@@ -41,16 +41,16 @@ async function collectRSSData() {
       const feed = await parser.parseURL(feedUrl);
       const items = [];
       
-      // Process recent items (last 7 days)
-      const sevenDaysAgo = new Date();
-      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+      // Process recent items (last 1 days)
+      const oneDayAgo = new Date();
+      oneDayAgo.setDate(oneDayAgo.getDate() - 1);
       
       for (const item of feed.items) {
         try {
           const publishedDate = new Date(item.pubDate || item.isoDate);
           
-          // Skip items older than 7 days
-          if (publishedDate < sevenDaysAgo) {
+          // Skip items older than 1 days
+          if (publishedDate < oneDayAgo) {
             continue;
           }
           
